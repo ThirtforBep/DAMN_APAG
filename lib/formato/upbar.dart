@@ -110,7 +110,7 @@ class DrawerMenuRight extends StatelessWidget {
               leading: const Icon(Icons.group),
               title: const Text('Profesores', style: TextStyle(color: Colors.blue)),  // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/profesores'); // Cambia la ruta según tu necesidad
+                Navigator.pushNamed(context, '/screens/directorio_screen'); // Cambia la ruta según tu necesidad
               },
             ),
             ListTile(
@@ -118,6 +118,13 @@ class DrawerMenuRight extends StatelessWidget {
               title: const Text('Iniciar sesión', style: TextStyle(color: Colors.blue)),  // Letras azules
               onTap: () {
                 Navigator.pushNamed(context, '/screens/login_screen');  // Ruta correcta
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.login),
+              title: const Text('Registrar', style: TextStyle(color: Colors.blue)),  // Letras azules
+              onTap: () {
+                Navigator.pushNamed(context, '/screens/register_screen');  // Ruta correcta
               },
             ),
             ListTile(

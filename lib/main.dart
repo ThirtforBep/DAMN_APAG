@@ -10,6 +10,8 @@ import 'planes_academicos/pa_mccd.dart';
 import 'package:proyecto_f/screens/map_screen.dart'; // Asegúrate de que la ruta esté correcta
 import 'package:proyecto_f/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart'; // Importa Firebase
+import 'package:proyecto_f/screens/directorio_screen.dart';
+import 'package:proyecto_f/screens/register_screen.dart';
 
 void main() async {
   // Inicializar Firebase
@@ -40,7 +42,9 @@ class MyApp extends StatelessWidget {
         '/pa_mccd': (context) => const MCCDPage(), // Ruta hacia la pantalla de MCCD
         '/screens/map_screen': (context) => const MapScreen(),
         '/screens/login_screen': (context) => LoginScreen(), // Asegúrate de agregar esta ruta
-      },
+        '/screens/directorio_screen' : (context) => DirectorioScreen(),
+        '/screens/register_screen' : (context) => RegisterScreen(),
+       },
     );
   }
 }

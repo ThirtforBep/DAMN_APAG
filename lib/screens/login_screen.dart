@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Para Firestore
-import 'package:proyecto_f/formato/downbar.dart';
-import 'package:proyecto_f/formato/upbar.dart';
-import 'home_screen.dart'; // Página a la que se navega al hacer login
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'home_screen.dart';
+import 'register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController boletaController = TextEditingController();
   final TextEditingController curpController = TextEditingController();
-
-  LoginScreen({super.key});
 
   // Lógica de autenticación personalizada con Firestore
   Future<void> loginUser(BuildContext context) async {
@@ -19,7 +16,7 @@ class LoginScreen extends StatelessWidget {
 
       if (boleta.isEmpty || curp.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Por favor, ingresa ambos campos')),
+          SnackBar(content: Text('Por favor, ingresa ambos campos')),
         );
         return;
       }
@@ -35,7 +32,7 @@ class LoginScreen extends StatelessWidget {
         // Usuario autenticado
         final userData = query.docs.first.data(); // Datos del usuario
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Inicio de sesión exitoso')),
+          SnackBar(content: Text('Inicio de sesión exitoso')),
         );
 
         // Navegar a la siguiente pantalla
@@ -48,7 +45,7 @@ class LoginScreen extends StatelessWidget {
       } else {
         // Usuario no encontrado
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Credenciales incorrectas')),
+          SnackBar(content: Text('Credenciales incorrectas')),
         );
       }
     } catch (e) {
@@ -62,66 +59,59 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const Barrasup(title: 'Iniciar Sesión'), // Llamamos al AppBar de Barrasup
-      drawer: const DrawerMenu(),  // Menú desplegable izquierdo
-      endDrawer: const DrawerMenuRight(),  // Menú desplegable derecho
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
-              // Título "Iniciar sesión"
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Iniciar Sesión',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
-                ),
+              Image.asset('assets/images/logo_escom.png', height: 150), // Asegúrate de agregar esta imagen a tus assets
+              SizedBox(height: 20),
+              Text(
+                'Bienvenido a ESCOM',
+                style: TextStyle(fontSize: 24, color: Colors.blue.shade900),
               ),
-              const SizedBox(height: 30),
-
-              // Campo de número de boleta
+              SizedBox(height: 20),
               TextField(
                 controller: boletaController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Número de Boleta',
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 10),
-
-              // Campo de CURP
+              SizedBox(height: 10),
               TextField(
                 controller: curpController,
                 obscureText: true,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'CURP',
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 20),
-
-              // Botón de inicio de sesión
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => loginUser(context),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue.shade900,
                   foregroundColor: Colors.white,
                 ),
-                child: const Text('Iniciar Sesión'),
+                child: Text('Iniciar Sesión'),
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  );
+                },
+                child: Text('¿Nuevo usuario? Regístrate aquí'),
               ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: const Barrainf(), // Usa Barrainf para la navegación en la parte inferior
     );
   }
 }
