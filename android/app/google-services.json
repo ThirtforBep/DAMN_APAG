@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "473045856751",
+    "project_id": "horariocompletodsic",
+    "storage_bucket": "horariocompletodsic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473045856751:android:bbf3efa26b7c1ce591c61a",
+        "android_client_info": {
+          "package_name": "com.example.escom_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHG0QAtfUcym4-L1ne6sBmUcJUBCVhwfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473045856751:android:b45da5a2daab0f5091c61a",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_f"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHG0QAtfUcym4-L1ne6sBmUcJUBCVhwfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
