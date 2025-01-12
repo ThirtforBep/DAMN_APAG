@@ -7,7 +7,6 @@ import 'planes_academicos/pa_lcd.dart';
 import 'planes_academicos/pa_mcscm.dart';
 import 'planes_academicos/pa_mciia.dart';
 import 'planes_academicos/pa_mccd.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Importar FontAwesome para Instagram
 import 'package:proyecto_f/screens/map_screen.dart'; // Asegúrate de que la ruta esté correcta
 import 'package:proyecto_f/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart'; // Importa Firebase

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:proyecto_f/formato/downbar.dart';
 import 'package:proyecto_f/formato/upbar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Importar FontAwesome para Instagram
 
 class ISCPage extends StatelessWidget {
   const ISCPage({super.key});

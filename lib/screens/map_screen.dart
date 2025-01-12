@@ -1,11 +1,9 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:proyecto_f/formato/downbar.dart'; // Asegúrate de que downbar.dart esté en formato
 import 'package:proyecto_f/formato/upbar.dart'; // Asegúrate de que upbar.dart esté en formato
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Para los íconos adicionales
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});

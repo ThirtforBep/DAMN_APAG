@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:proyecto_f/formato/downbar.dart';
 import 'package:proyecto_f/formato/upbar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Importar FontAwesome para Instagram
 
 class MCIIAPage extends StatelessWidget {
   const MCIIAPage({super.key});
