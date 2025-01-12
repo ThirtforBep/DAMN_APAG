@@ -38,7 +38,7 @@ class Barrainf extends StatelessWidget {
           Navigator.pushNamed(context, '/');
         } else if (index == 2) {
           // Redirigir a map_screen.dart
-          Navigator.pushNamed(context, '/opciones/map_screen');  // Usa la ruta registrada
+          Navigator.pushNamed(context, '/screens/map_screen');  // Usa la ruta registrada
         }
       },
     );

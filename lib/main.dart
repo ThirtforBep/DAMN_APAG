@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         '/pa_mcscm': (context) => const MCSCMPage(), // Ruta hacia la pantalla de MCSCM
         '/pa_mciia': (context) => const MCIIAPage(), // Ruta hacia la pantalla de MCIIA
         '/pa_mccd': (context) => const MCCDPage(), // Ruta hacia la pantalla de MCCD
-        '/screeens/map_screen': (context) => const MapScreen(),
+        '/screens/map_screen': (context) => const MapScreen(),
         '/screens/login_screen': (context) => LoginScreen(), // Asegúrate de agregar esta ruta
       },
     );

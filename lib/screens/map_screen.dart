@@ -28,6 +28,8 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Barrasup(title: 'ESCOM'),
+      drawer: const DrawerMenu(),  // Menú desplegable izquierdo
+      endDrawer: const DrawerMenuRight(),  // Menú desplegable derecho
       body: Column(
         children: [
           // Mapa
