@@ -38,7 +38,8 @@ class DrawerMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(  // Drawer para menú lateral izquierdo
+    return Drawer(
+      // Drawer para menú lateral izquierdo
       child: Container(
         color: Colors.white, // Fondo blanco para el menú
         child: ListView(
@@ -46,14 +47,15 @@ class DrawerMenu extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.white,  // Fondo blanco para la cabecera del Drawer
+                color: Colors.white, // Fondo blanco para la cabecera del Drawer
               ),
               child: Align(
-                alignment: Alignment.center,  // Centrar el texto "Menú de Navegación"
+                alignment:
+                    Alignment.center, // Centrar el texto "Menú de Navegación"
                 child: Text(
                   'Menú de Navegación',
                   style: TextStyle(
-                    color: Colors.blue,  // Letras azules
+                    color: Colors.blue, // Letras azules
                     fontSize: 24,
                   ),
                 ),
@@ -61,16 +63,19 @@ class DrawerMenu extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Inicio', style: TextStyle(color: Colors.blue)),  // Letras azules
+              title: const Text('Inicio',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
                 Navigator.pushNamed(context, '/');
               },
             ),
             ListTile(
               leading: const Icon(Icons.account_circle),
-              title: const Text('Directorio', style: TextStyle(color: Colors.blue)),  // Letras azules
+              title: const Text('Directorio',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/directorio');  // Cambia la ruta según tu necesidad
+                Navigator.pushNamed(context,
+                    '/directorio'); // Cambia la ruta según tu necesidad
               },
             ),
           ],
@@ -85,7 +90,8 @@ class DrawerMenuRight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(  // Drawer para menú lateral derecho
+    return Drawer(
+      // Drawer para menú lateral derecho
       child: Container(
         color: Colors.white, // Fondo blanco para el menú
         child: ListView(
@@ -93,14 +99,15 @@ class DrawerMenuRight extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.white,  // Fondo blanco para la cabecera del Drawer
+                color: Colors.white, // Fondo blanco para la cabecera del Drawer
               ),
               child: Align(
-                alignment: Alignment.center,  // Centrar el texto "Menú de Navegación"
+                alignment:
+                    Alignment.center, // Centrar el texto "Menú de Navegación"
                 child: Text(
                   'Menú de Usuario',
                   style: TextStyle(
-                    color: Colors.blue,  // Letras azules
+                    color: Colors.blue, // Letras azules
                     fontSize: 24,
                   ),
                 ),
@@ -108,34 +115,57 @@ class DrawerMenuRight extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.group),
-              title: const Text('Profesores', style: TextStyle(color: Colors.blue)),  // Letras azules
+              title: const Text('Profesores',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/profesores'); // Cambia la ruta según tu necesidad
+                Navigator.pushNamed(
+                  context,
+                  '/screens/profesores_screen',
+                  arguments: {
+                    "Academia": "Academia de APAG",
+                    "CURP": "YSG118758TOQEJGDG",
+                    "Grupo": "5CM1",
+                    "Jueves": "",
+                    "Lab": "LE3",
+                    "Lunes": "",
+                    "Martes": "7:00-8:30",
+                    "Miercoles": "7:00-8:30L",
+                    "NumEmpleado": 2203,
+                    "Profesor asignado": "Felipe Zetina Salgado",
+                    "Salon": 1111,
+                    "Unidad de Aprendizaje": "Cero a Mamado en 5 minutos",
+                    "Viernes": "7:00-8:30",
+                  },
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.login),
-              title: const Text('Iniciar sesión', style: TextStyle(color: Colors.blue)),  // Letras azules
+              title: const Text('Iniciar sesión',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/screens/login_screen');  // Ruta correcta
+                Navigator.pushNamed(
+                    context, '/screens/login_screen'); // Ruta correcta
               },
             ),
             ListTile(
               leading: const Icon(Icons.edit),
-              title: const Text('Editar Perfil', style: TextStyle(color: Colors.blue)),  // Letras azules
+              title: const Text('Editar Perfil',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/editar_perfil'); // Cambia la ruta según tu necesidad
+                Navigator.pushNamed(context,
+                    '/editar_perfil'); // Cambia la ruta según tu necesidad
               },
             ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
-              title: const Text('Cerrar Sesión', style: TextStyle(color: Colors.blue)),  // Letras azules
+              title: const Text('Cerrar Sesión',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/cerrar_sesion'); // Cambia la ruta según tu necesidad
+                Navigator.pushNamed(context,
+                    '/cerrar_sesion'); // Cambia la ruta según tu necesidad
               },
             ),
-            
-            
           ],
         ),
       ),

@@ -9,6 +9,7 @@ import 'planes_academicos/pa_mciia.dart';
 import 'planes_academicos/pa_mccd.dart';
 import 'package:proyecto_f/screens/map_screen.dart'; // Asegúrate de que la ruta esté correcta
 import 'package:proyecto_f/screens/login_screen.dart';
+import 'package:proyecto_f/screens/profesores_screen.dart';
 import 'package:firebase_core/firebase_core.dart'; // Importa Firebase
 
 void main() async {
@@ -31,15 +32,28 @@ class MyApp extends StatelessWidget {
         // Rutas
         '/': (context) => const HomePage(),
         '/facebook': (context) => const FacebookPage(),
-        '/location': (context) => const LocationPage(), //! Ruta a parte del mapa
-        '/pa_isc': (context) => const ISCPage(), // Ruta hacia la pantalla de ISC
-        '/pa_iia': (context) => const IIAPage(), // Ruta hacia la pantalla de IIA
-        '/pa_lcd': (context) => const LCDPage(), // Ruta hacia la pantalla de LCD
-        '/pa_mcscm': (context) => const MCSCMPage(), // Ruta hacia la pantalla de MCSCM
-        '/pa_mciia': (context) => const MCIIAPage(), // Ruta hacia la pantalla de MCIIA
-        '/pa_mccd': (context) => const MCCDPage(), // Ruta hacia la pantalla de MCCD
+        '/location': (context) =>
+            const LocationPage(), //! Ruta a parte del mapa
+        '/pa_isc': (context) =>
+            const ISCPage(), // Ruta hacia la pantalla de ISC
+        '/pa_iia': (context) =>
+            const IIAPage(), // Ruta hacia la pantalla de IIA
+        '/pa_lcd': (context) =>
+            const LCDPage(), // Ruta hacia la pantalla de LCD
+        '/pa_mcscm': (context) =>
+            const MCSCMPage(), // Ruta hacia la pantalla de MCSCM
+        '/pa_mciia': (context) =>
+            const MCIIAPage(), // Ruta hacia la pantalla de MCIIA
+        '/pa_mccd': (context) =>
+            const MCCDPage(), // Ruta hacia la pantalla de MCCD
         '/screens/map_screen': (context) => const MapScreen(),
-        '/screens/login_screen': (context) => LoginScreen(), // Asegúrate de agregar esta ruta
+        '/screens/login_screen': (context) =>
+            LoginScreen(), // Asegúrate de agregar esta ruta
+        '/screens/profesores_screen': (context) {
+          final args = ModalRoute.of(context)?.settings.arguments
+              as Map<String, dynamic>;
+          return Profesores(data: args);
+        },
       },
     );
   }
@@ -51,9 +65,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const Barrasup(title: 'ESCOM'), // Llamamos al AppBar de Barrasup 
-      drawer: const DrawerMenu(),  // Menú desplegable izquierdo
-      endDrawer: const DrawerMenuRight(),  // Menú desplegable derecho
+      appBar: const Barrasup(title: 'ESCOM'), // Llamamos al AppBar de Barrasup
+      drawer: const DrawerMenu(), // Menú desplegable izquierdo
+      endDrawer: const DrawerMenuRight(), // Menú desplegable derecho
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -151,21 +165,24 @@ class HomePage extends StatelessWidget {
                   Icons.cloud,
                   'MCSCM',
                   () {
-                    Navigator.pushNamed(context, '/pa_mcscm'); // Navega a MCSCMPage
+                    Navigator.pushNamed(
+                        context, '/pa_mcscm'); // Navega a MCSCMPage
                   },
                 ),
                 _buildIconLink(
                   Icons.code,
                   'MCIIA',
                   () {
-                    Navigator.pushNamed(context, '/pa_mciia'); // Navega a MCIIAPage
+                    Navigator.pushNamed(
+                        context, '/pa_mciia'); // Navega a MCIIAPage
                   },
                 ),
                 _buildIconLink(
                   Icons.storage,
                   'MCCD',
                   () {
-                    Navigator.pushNamed(context, '/pa_mccd'); // Navega a MCCDPage
+                    Navigator.pushNamed(
+                        context, '/pa_mccd'); // Navega a MCCDPage
                   },
                 ),
               ],
@@ -173,7 +190,8 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const Barrainf(),  // Usa Barrainf para la navegación en la parte inferior
+      bottomNavigationBar:
+          const Barrainf(), // Usa Barrainf para la navegación en la parte inferior
     );
   }
 
