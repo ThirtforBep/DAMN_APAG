@@ -75,7 +75,7 @@ class DrawerMenu extends StatelessWidget {
                   style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
                 Navigator.pushNamed(context,
-                    '/directorio'); // Cambia la ruta según tu necesidad
+                    '/screens/directorio_screen'); // Cambia la ruta según tu necesidad
               },
             ),
           ],

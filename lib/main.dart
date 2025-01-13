@@ -13,6 +13,8 @@ import 'package:proyecto_f/screens/profesores_screen.dart';
 import 'package:firebase_core/firebase_core.dart'; // Importa Firebase
 import 'package:proyecto_f/screens/directorio_screen.dart';
 import 'package:proyecto_f/screens/register_screen.dart';
+import 'package:proyecto_f/screens/facebook_page.dart'; // Importa FacebookPage correctamente
+// import 'package:url_launcher/url_launcher.dart';
 
 void main() async {
   // Inicializar Firebase
@@ -34,8 +36,8 @@ class MyApp extends StatelessWidget {
         // Rutas
         '/': (context) => const HomePage(),
         '/facebook': (context) => const FacebookPage(),
-        '/location': (context) =>
-            const LocationPage(), //! Ruta a parte del mapa
+        // '/location': (context) =>
+        //     const LocationPage(), //! Ruta a parte del mapa
         '/pa_isc': (context) =>
             const ISCPage(), // Ruta hacia la pantalla de ISC
         '/pa_iia': (context) =>
@@ -223,38 +225,6 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 5),
           Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
         ],
-      ),
-    );
-  }
-}
-
-class FacebookPage extends StatelessWidget {
-  const FacebookPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Facebook'),
-      ),
-      body: const Center(
-        child: Text('Página de Facebook'),
-      ),
-    );
-  }
-}
-
-class LocationPage extends StatelessWidget {
-  const LocationPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ubicación'),
-      ),
-      body: const Center(
-        child: Text('Página de Ubicación'),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // Para lanzar URLs
 import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Para Instagram y Map
+import 'package:url_launcher/url_launcher.dart'; // Para lanzar URLs
 
 class Barrainf extends StatelessWidget {
   const Barrainf({super.key});
@@ -27,7 +27,7 @@ class Barrainf extends StatelessWidget {
       onTap: (index) async {
         if (index == 0) {
           // Redirigir a Facebook
-          final url = Uri.parse('https://www.facebook.com/escomipnmx/?ref=embed_page');
+          final url = Uri.parse('https://www.google.com');
           if (await canLaunch(url.toString())) {  // Verifica si la URL puede ser lanzada
             await launch(url.toString(), forceWebView: false, forceSafariVC: false);  // Abre la URL fuera de la app
           } else {

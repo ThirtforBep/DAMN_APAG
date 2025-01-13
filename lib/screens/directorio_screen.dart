@@ -1,75 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Para Firestore
+import 'package:proyecto_f/formato/downbar.dart';
+import 'package:proyecto_f/formato/upbar.dart';
 
-class DirectorioScreen extends StatelessWidget {
-  const DirectorioScreen({Key? key}) : super(key: key);
+class DirectorioScreen extends StatefulWidget {
+  const DirectorioScreen({super.key});
+
+  @override
+  _DirectorioScreenState createState() => _DirectorioScreenState();
+}
+
+class _DirectorioScreenState extends State<DirectorioScreen> {
+  // Lista de profesores que se actualizará con los datos de Firestore
+  late Future<List<Map<String, dynamic>>> _professors;
+
+  @override
+  void initState() {
+    super.initState();
+    _professors =
+        getProfessors(); // Carga los profesores desde Firestore al inicio
+  }
+
+  // Función para obtener los datos de los jefes desde Firestore
+  Future<List<Map<String, dynamic>>> getProfessors() async {
+    try {
+      final snapshot = await FirebaseFirestore.instance
+          .collection('jefes') // Colección de los jefes/profesores
+          .get();
+
+      return snapshot.docs.map((doc) => doc.data()).toList();
+    } catch (e) {
+      throw Exception('Error al cargar los datos: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Directorio de Profesores',
-        style: TextStyle(
-            fontSize: 24,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.blue.shade900,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white), // Cambia el color aquí
-          onPressed: () {
-            Navigator.pop(context); // Vuelve a la pantalla anterior
+      appBar: const Barrasup(title: 'Directorio'), // AppBar con título
+      drawer: const DrawerMenu(), // Menú desplegable izquierdo
+      endDrawer: const DrawerMenuRight(), // Menú desplegable derecho
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: FutureBuilder<List<Map<String, dynamic>>>(
+          future: _professors, // Obtén la lista de profesores
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Center(
+                  child: Text('No hay profesores disponibles.'));
+            } else {
+              final professors = snapshot.data!;
+              return ListView.builder(
+                itemCount: professors.length,
+                itemBuilder: (context, index) {
+                  final professor = professors[index];
+                  return Card(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    child: ListTile(
+                      leading: const Icon(Icons.person), // Ícono de persona
+                      title: Text(
+                          '${professor['Nombre']} ${professor['PrimerApe']}${professor['SegundoApe']}'),
+                      subtitle: Text('${professor['Academia']}'),
+                      trailing: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                              '${professor['Contacto']}'), // Información de contacto
+                          const SizedBox(height: 5),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            }
           },
         ),
       ),
-      body: FutureBuilder<QuerySnapshot>(
-        future: FirebaseFirestore.instance.collection('horarios_actualizado').get(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-
-          if (snapshot.hasError) {
-            return Center(child: Text('Error al cargar los datos'));
-          }
-
-          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No hay datos disponibles'));
-          }
-
-          // Procesar los datos para evitar duplicados
-          final profesores = <String, String>{}; // Map para evitar duplicados, usando el nombre como clave y academia como valor
-          for (var doc in snapshot.data!.docs) {
-            final data = doc.data() as Map<String, dynamic>;
-            final profesor = data['Profesor asignado'] ?? '';
-            final academia = data['Academia'] ?? '';
-            if (profesor.isNotEmpty) {
-              profesores[profesor] = academia;
-            }
-          }
-
-          return ListView.builder(
-            itemCount: profesores.length,
-            itemBuilder: (context, index) {
-              final nombreProfesor = profesores.keys.elementAt(index);
-              final academia = profesores.values.elementAt(index);
-
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.blue.shade900,
-                  child: Icon(Icons.person, color: Colors.white),
-                ),
-                title: Text(
-                  nombreProfesor,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                subtitle: Text(academia),
-              );
-            },
-          );
-        },
-      ),
+      bottomNavigationBar: const Barrainf(), // Barra de navegación inferior
     );
   }
 }
