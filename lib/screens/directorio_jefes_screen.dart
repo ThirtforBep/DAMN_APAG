@@ -3,14 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart'; // Para Firestore
 import 'package:proyecto_f/formato/downbar.dart';
 import 'package:proyecto_f/formato/upbar.dart';
 
-class DirectorioScreen extends StatefulWidget {
-  const DirectorioScreen({super.key});
+class DirectorioJefesScreen extends StatefulWidget {
+  const DirectorioJefesScreen({super.key});
 
   @override
   _DirectorioScreenState createState() => _DirectorioScreenState();
 }
 
-class _DirectorioScreenState extends State<DirectorioScreen> {
+class _DirectorioScreenState extends State<DirectorioJefesScreen> {
   // Lista de profesores que se actualizará con los datos de Firestore
   late Future<List<Map<String, dynamic>>> _professors;
 

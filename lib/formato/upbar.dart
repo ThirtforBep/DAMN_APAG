@@ -75,7 +75,7 @@ class DrawerMenu extends StatelessWidget {
                   style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
                 Navigator.pushNamed(context,
-                    '/screens/directorio_screen'); // Cambia la ruta según tu necesidad
+                    '/screens/directorio_jefes_screen'); // Cambia la ruta según tu necesidad
               },
             ),
           ],
@@ -119,7 +119,7 @@ class DrawerMenuRight extends StatelessWidget {
                   style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
                 Navigator.pushNamed(context,
-                    '/screens/directorio_screen'); // Cambia la ruta según tu necesidad
+                    '/screens/directorio_profesores_screen'); // Cambia la ruta según tu necesidad
               },
             ),
             ListTile(

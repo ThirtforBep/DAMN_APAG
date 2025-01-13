@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'directorio_screen.dart';
+import 'directorio_jefes_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final Map<String, dynamic> userData;
@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DirectorioScreen()),
+                  MaterialPageRoute(builder: (context) => DirectorioJefesScreen()),
                 );
               },
             ),
