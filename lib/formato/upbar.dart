@@ -118,25 +118,8 @@ class DrawerMenuRight extends StatelessWidget {
               title: const Text('Profesores',
                   style: TextStyle(color: Colors.blue)), // Letras azules
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  '/screens/profesores_screen',
-                  arguments: {
-                    "Academia": "Academia de APAG",
-                    "CURP": "YSG118758TOQEJGDG",
-                    "Grupo": "5CM1",
-                    "Jueves": "",
-                    "Lab": "LE3",
-                    "Lunes": "",
-                    "Martes": "7:00-8:30",
-                    "Miercoles": "7:00-8:30L",
-                    "NumEmpleado": 2203,
-                    "Profesor asignado": "Felipe Zetina Salgado",
-                    "Salon": 1111,
-                    "Unidad de Aprendizaje": "Cero a Mamado en 5 minutos",
-                    "Viernes": "7:00-8:30",
-                  },
-                );
+                Navigator.pushNamed(context,
+                    '/screens/directorio_screen'); // Cambia la ruta según tu necesidad
               },
             ),
             ListTile(
@@ -146,6 +129,15 @@ class DrawerMenuRight extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                     context, '/screens/login_screen'); // Ruta correcta
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.login),
+              title: const Text('Registrar',
+                  style: TextStyle(color: Colors.blue)), // Letras azules
+              onTap: () {
+                Navigator.pushNamed(
+                    context, '/screens/register_screen'); // Ruta correcta
               },
             ),
             ListTile(
