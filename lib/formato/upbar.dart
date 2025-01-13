@@ -70,7 +70,7 @@ class DrawerMenu extends StatelessWidget {
               leading: const Icon(Icons.account_circle),
               title: const Text('Directorio', style: TextStyle(color: Colors.blue)),  // Letras azules
               onTap: () {
-                Navigator.pushNamed(context, '/directorio');  // Cambia la ruta según tu necesidad
+                Navigator.pushNamed(context, '/screens/directorio_screen');  // Cambia la ruta según tu necesidad
               },
             ),
           ],
